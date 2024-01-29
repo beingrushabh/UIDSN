@@ -5,8 +5,7 @@ import 'package:rushabh_s_application/core/app_export.dart';
 import 'package:rushabh_s_application/widgets/app_bar/appbar_leading_iconbutton.dart';
 import 'package:rushabh_s_application/widgets/app_bar/appbar_title.dart';
 import 'package:rushabh_s_application/widgets/app_bar/custom_app_bar.dart';
-import 'package:rushabh_s_application/widgets/custom_icon_button.dart';
-
+import 'package:rushabh_s_application/presentation/comment_tab/comment_widget.dart';
 class PostScreen extends StatelessWidget {
   const PostScreen({Key? key})
       : super(
@@ -36,6 +35,7 @@ class PostScreen extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
+                  //Post Profile ID
                   Padding(
                     padding: EdgeInsets.only(left: 11.h),
                     child: _buildProfileRow(
@@ -46,6 +46,7 @@ class PostScreen extends StatelessWidget {
                     ),
                   ),
                   SizedBox(height: 11.v),
+                  //post caption
                   Container(
                     width: 355.h,
                     margin: EdgeInsets.only(
@@ -60,6 +61,7 @@ class PostScreen extends StatelessWidget {
                     ),
                   ),
                   SizedBox(height: 4.v),
+                  //post photo/media
                   CustomImageView(
                     imagePath: ImageConstant.imgRectangle27,
                     height: 242.v,
@@ -67,135 +69,13 @@ class PostScreen extends StatelessWidget {
                     margin: EdgeInsets.only(left: 1.h),
                   ),
                   SizedBox(height: 10.v),
+                  //Post reactions
                   _buildPostRow(context),
                   SizedBox(height: 19.v),
-                  Padding(
-                    padding: EdgeInsets.only(left: 16.h),
-                    child: _buildProfileRow(
-                      context,
-                      username: "lbl_rohan_das".tr,
-                      handle: "msg_indian_football".tr,
-                      timestamp: "lbl_30_min_ago".tr,
-                    ),
-                  ),
-                  SizedBox(height: 7.v),
-                  Align(
-                    alignment: Alignment.center,
-                    child: Container(
-                      width: 372.h,
-                      margin: EdgeInsets.only(
-                        left: 16.h,
-                        right: 4.h,
-                      ),
-                      child: Text(
-                        "msg_your_mobile_ui".tr,
-                        maxLines: 4,
-                        overflow: TextOverflow.ellipsis,
-                        style: theme.textTheme.bodyMedium,
-                      ),
-                    ),
-                  ),
-                  SizedBox(height: 6.v),
-                  Align(
-                    alignment: Alignment.centerRight,
-                    child: Padding(
-                      padding: EdgeInsets.only(right: 10.h),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.end,
-                        children: [
-                          SizedBox(
-                            height: 30.v,
-                            width: 84.h,
-                            child: Stack(
-                              alignment: Alignment.centerLeft,
-                              children: [
-                                CustomImageView(
-                                  imagePath: ImageConstant.imgClose,
-                                  height: 30.v,
-                                  width: 84.h,
-                                  alignment: Alignment.center,
-                                ),
-                                Align(
-                                  alignment: Alignment.centerLeft,
-                                  child: Padding(
-                                    padding: EdgeInsets.only(left: 10.h),
-                                    child: Row(
-                                      children: [
-                                        CustomImageView(
-                                          imagePath:
-                                              ImageConstant.imgReplyArrow,
-                                          height: 18.v,
-                                          width: 20.h,
-                                        ),
-                                        Padding(
-                                          padding: EdgeInsets.only(left: 3.h),
-                                          child: Text(
-                                            "lbl_reply".tr,
-                                            style: CustomTextStyles
-                                                .bodyMediumWhiteA700,
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                          Container(
-                            height: 30.v,
-                            width: 58.h,
-                            margin: EdgeInsets.only(left: 17.h),
-                            child: Stack(
-                              alignment: Alignment.bottomLeft,
-                              children: [
-                                CustomImageView(
-                                  imagePath: ImageConstant.imgClose,
-                                  height: 30.v,
-                                  width: 58.h,
-                                  alignment: Alignment.center,
-                                ),
-                                Align(
-                                  alignment: Alignment.bottomLeft,
-                                  child: Padding(
-                                    padding: EdgeInsets.only(
-                                      left: 10.h,
-                                      bottom: 5.v,
-                                    ),
-                                    child: Row(
-                                      children: [
-                                        CustomImageView(
-                                          imagePath:
-                                              ImageConstant.imgUpvoteIcon16x15,
-                                          height: 16.v,
-                                          width: 15.h,
-                                        ),
-                                        Padding(
-                                          padding: EdgeInsets.only(left: 3.h),
-                                          child: Text(
-                                            "lbl_32".tr,
-                                            style: CustomTextStyles
-                                                .bodyMediumWhiteA700,
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                          CustomImageView(
-                            imagePath: ImageConstant.imgTwitter,
-                            height: 30.v,
-                            width: 36.h,
-                            margin: EdgeInsets.only(left: 17.h),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                  SizedBox(height: 5.v),
+                  //comment section, this is the section where the error is
+                  // SizedBox(
+                  //   child: CommentScreen(),
+                  // )
                 ],
               ),
             ),
@@ -228,95 +108,134 @@ class PostScreen extends StatelessWidget {
       styleType: Style.bgGradientnameblack900nameblack900opacity0,
     );
   }
-
+//UI corrected
   /// Section Widget
   Widget _buildPostRow(BuildContext context) {
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 9.h),
       child: Row(
         children: [
+          //Below id Upvote icon with upvote count
           SizedBox(
             height: 30.v,
-            width: 57.h,
-            child: Stack(
-              alignment: Alignment.centerLeft,
-              children: [
-                CustomImageView(
-                  imagePath: ImageConstant.imgUpvote,
-                  height: 30.v,
-                  width: 57.h,
-                  alignment: Alignment.center,
+            width: 70.h,
+            child: Container(
+              decoration: BoxDecoration(
+                border: Border.all(
+                  color: Colors.white.withOpacity(0.5),
                 ),
-                CustomImageView(
-                  imagePath: ImageConstant.imgUpvoteIcon,
-                  height: 16.adaptSize,
-                  width: 16.adaptSize,
-                  alignment: Alignment.centerLeft,
-                  margin: EdgeInsets.only(left: 6.h),
-                ),
-              ],
-            ),
-          ),
-          Padding(
-            padding: EdgeInsets.only(left: 16.h),
-            child: CustomIconButton(
-              height: 30.adaptSize,
-              width: 30.adaptSize,
-              child: CustomImageView(
-                imagePath: ImageConstant.imgPostDownvoteButtonWhiteA700,
+                borderRadius: BorderRadius.circular(15.0),
+              ),
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Icon(
+                    Icons.arrow_upward,
+                    color: Colors.white,
+                    size: 23.0,
+                  ),
+                  SizedBox(width: 4.0),
+                  Text(
+                    "32",
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 18,
+                    ),
+                  ),
+                ],
               ),
             ),
           ),
-          Container(
+          SizedBox(width: 10.h),
+          //down vote button
+          SizedBox(
             height: 30.v,
-            width: 100.h,
-            margin: EdgeInsets.only(left: 16.h),
-            child: Stack(
-              alignment: Alignment.centerLeft,
-              children: [
-                CustomImageView(
-                  imagePath: ImageConstant.imgPostShareButton,
-                  height: 30.v,
-                  width: 100.h,
-                  alignment: Alignment.center,
+            width: 40.h,
+            child: Container(
+              decoration: BoxDecoration(
+                border: Border.all(
+                  color: Colors.white.withOpacity(0.5),
                 ),
-                Align(
-                  alignment: Alignment.centerLeft,
-                  child: Padding(
-                    padding: EdgeInsets.only(left: 6.h),
-                    child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        CustomImageView(
-                          imagePath: ImageConstant.imgUpvoteIcon,
-                          height: 16.adaptSize,
-                          width: 16.adaptSize,
-                        ),
-                        CustomImageView(
-                          imagePath: ImageConstant.imgCommentText,
-                          height: 8.v,
-                          width: 56.h,
-                          margin: EdgeInsets.only(
-                            left: 6.h,
-                            top: 3.v,
-                            bottom: 4.v,
-                          ),
-                        ),
-                      ],
+                borderRadius: BorderRadius.circular(15.0),
+              ),
+              child: Row(
+                mainAxisSize: MainAxisSize.min,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Center(
+                    child: Icon(
+                      Icons.arrow_downward_rounded,
+                      color: Colors.white,
+                      size: 23.0,
                     ),
                   ),
+                ],
+              ),
+            ),
+          ),
+          //comment button
+          SizedBox(width: 10.h),
+          SizedBox(
+            height: 30.v,
+            width: 140.h,
+            child: Container(
+              decoration: BoxDecoration(
+                border: Border.all(
+                  color: Colors.white.withOpacity(0.5),
                 ),
-              ],
+                borderRadius: BorderRadius.circular(15.0),
+              ),
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Icon(
+                    Icons.comment,
+                    color: Colors.white,
+                    size: 18.0,
+                  ),
+                  SizedBox(width: 10.0),
+                  Text(
+                    "Comment",
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 18,
+                    ),
+                  ),
+                ],
+              ),
             ),
           ),
           Spacer(),
-          CustomIconButton(
+          SizedBox(
             height: 30.adaptSize,
-            width: 30.adaptSize,
-            child: CustomImageView(
-              imagePath: ImageConstant.imgPostShareButton,
+            width: 40.adaptSize,
+            child: Container(
+              decoration: BoxDecoration(
+                border: Border.all(
+                  color: Colors.white.withOpacity(0.5),
+                ),
+                borderRadius: BorderRadius.circular(15.0),
+              ),
+              child: Row(
+                mainAxisSize: MainAxisSize.min,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Center(
+                    child: Icon(
+                      Icons.share,
+                      color: Colors.white,
+                      size:22,
+                    ),
+                  ),
+                ],
+              ),
             ),
           ),
+
         ],
       ),
     );
